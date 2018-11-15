@@ -2,7 +2,7 @@ Package: PCA
 Title: This package construct an interactive PCA plot using the gene intensity data from different samples or individuals
 Version: 0.0.0.9000
 Authors@R: person("Shubham", "Jaiswal", email = "shubhamj@iiserb.ac.in", role = c("aut", "cre"))
-Description: This package makes an interactive PCA plot using the gene intensity data for different samples or individuals and also save the plot as a static png file in the working directory. The PCA analysis can be done with or without scaling the data. This option allows revealing the effect of data scaling on PCA analysis.
+Description: This package makes an interactive PCA plot using the gene intensity data for different samples or individuals and also save the plot as a static png file in the working directory. The PCA analysis can be done with or without scaling the data. These options allow for revealing the effect of data scaling on PCA analysis.
 Depends: R (>= 3.3.2)
 License: GNU General Public License v2.0
 Encoding: UTF-8
