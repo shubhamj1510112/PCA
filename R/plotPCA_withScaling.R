@@ -37,7 +37,7 @@ plotpca_withscaling <- function(genedata, metadata){
   genedata3 <- genedata3[-1, ]
   genedata3$sIdx = rownames(genedata3)
   # define new column names from gene_1 to gene_22410
-  name_col =   paste("gene", 1:22410, sep="_")
+  name_col =   as.character(genedata2[1:22410,1])
   name_col = c(name_col, 'sIdx')
   colnames(genedata3) = name_col
   # metadata file is clean so no preprocessing required
@@ -65,14 +65,14 @@ plotpca_withscaling <- function(genedata, metadata){
   if (!require("factoextra")) install.packages("factoextra")
   require(factoextra)
   png(filename = "pca_plot_withscaling.png", width = 10, height = 5, units='in', res=300, bg = "white")
-  print({p1 = fviz_pca_ind(gene_pca, habillage=df$Time,pointsize=3,pointshape = 19,
-                          label = "none", legend.title = "Time", invisible="quali", 
-                          title="PCA Plot With Scaling")})
+  print({p1 = fviz_pca_biplot(gene_pca, habillage=df$Time,pointsize=3,pointshape = 19,
+                         label = "var", legend.title = "Time", invisible="quali", 
+                         title="PCA Plot With Scaling", col.var="black", select.var=list(contrib = 4), repel=T)})
   dev.off()
   if (!require("plotly")) install.packages("plotly")
   require(plotly)
-  p1 = fviz_pca_ind(gene_pca, habillage=df$Time,pointsize=3,pointshape = 19,
-                    label = "none", legend.title = "Time", invisible="quali", 
-                    title="PCA Plot With Scaling")
-  return(ggplotly(p1))
+  p1 = fviz_pca_biplot(gene_pca, habillage=df$Time,pointsize=3,pointshape = 19,
+                         label = "var", legend.title = "Time", invisible="quali", 
+                         title="PCA Plot With Scaling", col.var="black", select.var=list(contrib = 4), repel=T)
+  return(ggplotly(p1, tooltip = c("x", "y", "colour")))
 }
